@@ -30,6 +30,8 @@ Plugin 'git@github.com:terryma/vim-expand-region.git'
 Plugin 'git@github.com:w0rp/ale.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
+Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
+Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -188,8 +190,8 @@ set wrap "Wrap lines
 """"""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -674,7 +676,7 @@ endfunction
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
+let g:bufExplorerSortBy='mru'
 map <leader>o :BufExplorer<cr>
 
 """"""""""""""""""""""""""""""
@@ -750,4 +752,4 @@ let g:ale_set_highlights = 0
 " Only run linting when saving the file
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-
+let g:expand_region_text_objects = {'i]': 1,'ib': 1,'iB': 1, 'a]': 1, 'aB': 1, 'iw': 0, 'iW': 0, 'i"':0, 'i''' :0} 
