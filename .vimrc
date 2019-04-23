@@ -32,6 +32,7 @@ Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'git@github.com:jiangmiao/auto-pairs.git'
+Plugin 'git@github.com:haya14busa/incsearch.vim.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,7 +74,6 @@ command W w !sudo tee % > /dev/null
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 
-map <C-e> <Plug>(easymotion-bd-w)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,9 +197,11 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+map <C-e> <Plug>(easymotion-bd-w)
+map <space>  <Plug>(incsearch-forward)
+let g:EasyMotion_smartcase = 1
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -752,4 +754,4 @@ let g:ale_set_highlights = 0
 " Only run linting when saving the file
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-let g:expand_region_text_objects = {'i]': 1,'ib': 1,'iB': 1, 'a]': 1, 'aB': 1, 'iw': 0, 'iW': 0, 'i"':0, 'i''' :0} 
+let g:expand_region_text_objects = {'i]': 1,'ib': 1,'iB': 1, 'a]': 1, 'aB': 1, 'iw': 0, 'iW': 0, 'i"':0, 'i''' :0, 'ip'  :1} 
