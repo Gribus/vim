@@ -453,7 +453,7 @@ map <C-p> :NERDTreeToggle<CR>
 " fzf stuff
 set rtp+=/usr/local/opt/fzf
 
-nmap [ :Buffers<CR>
+nmap § :Buffers<CR>
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
@@ -755,3 +755,12 @@ let g:ale_set_highlights = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 let g:expand_region_text_objects = {'i]': 1,'ib': 1,'iB': 1, 'a]': 1, 'aB': 1, 'iw': 0, 'iW': 0, 'i"':0, 'i''' :0, 'ip'  :1} 
+
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
