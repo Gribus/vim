@@ -116,6 +116,8 @@ alias json="python -m json.tool"
 alias o="open"
 alias cs="cht.sh"
 alias nbrew="HOMEBREW_NO_AUTO_UPDATE=1 brew install"
+alias uv="~/vim/update-vim.sh"
+alias pv="~/vim/pull-vim.sh"
 
 stty -ixon
 
