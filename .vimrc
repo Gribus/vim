@@ -17,6 +17,7 @@ Plugin 'git@github.com:morhetz/gruvbox.git'
 Plugin 'git@github.com:sjl/gundo.vim.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:SirVer/ultisnips.git'
+Plugin 'honza/vim-snippets'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
 Plugin 'git@github.com:pangloss/vim-javascript.git'
 Plugin 'git@github.com:moll/vim-node.git'
@@ -412,13 +413,14 @@ map <leader>3 :diffget //3<cr>
 map <leader>2 :diffget //2<cr>
 map <leader>1 :diffget<cr>
 
+" How many spaces are used as Tab
 set tabstop=2
 set shiftwidth=2
 
+" Set vertical and horizontal orientation lines
 set colorcolumn=100
 set cursorline
 
-set expandtab
 set shiftwidth=2
 set softtabstop=2
 
@@ -429,6 +431,8 @@ nnoremap <Tab> <C-^>
 let g:vue_disable_pre_processors=1
 
 let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-q>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:UltiSnipsSnippetDirectories=["jssnippets"]
 
