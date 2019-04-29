@@ -34,6 +34,7 @@ Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:haya14busa/incsearch.vim.git'
+Plugin 'romainl/vim-qf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -769,3 +770,7 @@ if has("clipboard")
   endif
 endif
 
+" use ag insteag of ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
