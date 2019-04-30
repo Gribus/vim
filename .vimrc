@@ -774,3 +774,9 @@ endif
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+" use code syntax and style to align
+set smartindent
+
+" auto save on losing focus
+:au FocusLost * silent! wa
