@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/root/.oh-my-zsh"
+export ZSH="/Users/alex/.oh-my-zsh"
 
 bindkey -v
 KEYTIMEOUT=1
@@ -126,3 +126,4 @@ export LC_CTYPE=de_DE.UTF-8
 export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
+eval $(thefuck --alias)
