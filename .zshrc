@@ -11,7 +11,7 @@ KEYTIMEOUT=1
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -118,6 +118,7 @@ alias cs="cht.sh"
 alias nbrew="HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 alias uv="~/vim/update-vim.sh"
 alias pv="~/vim/pull-vim.sh"
+alias f="fuck"
 
 stty -ixon
 
