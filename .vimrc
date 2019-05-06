@@ -443,8 +443,9 @@ let g:gundo_prefer_python3 = 1
 
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
-let b:ale_linters = {'javascript': ['jshint']}
-let b:ale_fixers = {'javascript': ['jshint']}
+let g:ale_linters = {'javascript': ['prettier']}
+let g:ale_fixers = [ 'prettier' ]
+let g:ale_linters_explicit = 1
 
 :set splitright
 
@@ -655,29 +656,6 @@ endfunc
 
 
 """"""""""""""""""""""""""""""
-" => JavaScript section
-"""""""""""""""""""""""""""""""
-au FileType javascript setl fen
-au FileType javascript setl nocindent
-
-au FileType javascript imap <c-t> $log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-
-au FileType javascript inoremap <buffer> $r return 
-au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
-
-function! JavaScriptFold() 
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
-
-""""""""""""""""""""""""""""""
 " => bufExplorer plugin
 """"""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0
@@ -740,25 +718,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': ' ', 'right': ' ' }
       \ }
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_linters = {
-\   'javascript': ['jshint'],
-\   'python': ['flake8'],
-\   'go': ['go', 'golint', 'errcheck']
-\}
-
-nmap <silent> <leader>a <Plug>(ale_next_wrap)
-
-" Disabling highlighting
-let g:ale_set_highlights = 0
-
-" Only run linting when saving the file
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
 
 " expand region settings
 let g:expand_region_text_objects = {'i]': 1,'ib': 1,'iB': 1, 'a]': 1, 'aB': 1, 'ab': 1, 'i"':0, 'i''' :0} 
