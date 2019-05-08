@@ -443,8 +443,8 @@ let g:gundo_prefer_python3 = 1
 
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
-let g:ale_linters = {'javascript': ['prettier']}
-let g:ale_fixers = [ 'prettier' ]
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = [ 'eslint' ]
 let g:ale_linters_explicit = 1
 
 :set splitright
