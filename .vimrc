@@ -33,8 +33,10 @@ Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'git@github.com:jiangmiao/auto-pairs.git'
-Plugin 'git@github.com:haya14busa/incsearch.vim.git'
-Plugin 'romainl/vim-qf'
+Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
+Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
+Plugin 'git@github.com:alvan/vim-closetag.git'
+Plugin 'git@github.com:mxw/vim-jsx.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -200,10 +202,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-e> <Plug>(easymotion-bd-w)
-map <space>  <Plug>(incsearch-forward)
 let g:EasyMotion_smartcase = 1
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -443,9 +442,10 @@ let g:gundo_prefer_python3 = 1
 
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
-let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = [ 'eslint' ]
+let g:ale_linters = {'javascript': ['prettier']}
+let g:ale_fixers = [ 'prettier' ]
 let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
 
 :set splitright
 
@@ -741,3 +741,18 @@ set smartindent
 
 " auto save on losing focus
 :au FocusLost * silent! wa
+
+" jsdoc hotkey
+nmap <silent> <C-l> <Plug>(jsdoc)
+let g:jsdoc_enable_es6 = 1
+
+" multiple cursors bindings
+let g:multi_cursor_start_word_key      = '<C-s>'
+let g:multi_cursor_next_key            = '<C-s>'
+
+" auto html tags filetypes
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.vue'
+
+" search with space
+nmap <Space> /
+nmap <C-Space> ?
