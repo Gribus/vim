@@ -81,8 +81,8 @@ nmap <Leader>q :q<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" Set 15 lines to the cursor - when moving vertically using j/k
+set so=15
 
 "Always show current position
 set ruler
@@ -130,11 +130,6 @@ set tm=500
 if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
-
-
-" Add a bit extra margin to the left
-set foldcolumn=1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -391,10 +386,8 @@ if has("gui_macvim")
   noremap <D-0> :tablast<CR>
 endif
 
-map <C-d> 20j
-map <C-u> 20k
-
-set nofoldenable
+map <C-d> 10j
+map <C-u> 10k
 
 nnoremap <C-t> :tabnew<CR>
 set switchbuf=useopen
@@ -756,3 +749,11 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.vue'
 " search with space
 nmap <Space> /
 nmap <C-Space> ?
+
+set foldclose=all " Close folds if you leave them in any way
+set foldcolumn=1 " Show the foldcolumn
+set foldenable " Turn on folding
+set foldlevel=0 " Autofold everything by default
+set foldmethod=indent " Fold on the indent
+set foldnestmax=1 " I only like to fold outer functions
+set foldopen=all " Open folds if you touch them in any way
