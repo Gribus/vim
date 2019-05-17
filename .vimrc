@@ -753,9 +753,9 @@ nmap <C-Space> ?
 set foldclose=all " Close folds if you leave them in any way
 set foldcolumn=1 " Show the foldcolumn
 set foldenable " Turn on folding
-set foldlevel=0 " Autofold everything by default
+set foldlevel=5 " Autofold everything by default
 set foldmethod=indent " Fold on the indent
-set foldnestmax=1 " I only like to fold outer functions
+" set foldnestmax=1 " I only like to fold outer functions
 set foldopen=all " Open folds if you touch them in any way
 
 " use <tab> for trigger completion and navigate to the next complete item
