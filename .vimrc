@@ -11,7 +11,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 Plugin 'git@github.com:junegunn/fzf.vim.git'
 Plugin 'git@github.com:morhetz/gruvbox.git'
 Plugin 'git@github.com:sjl/gundo.vim.git'
@@ -19,10 +18,8 @@ Plugin 'git@github.com:scrooloose/nerdtree.git'
 Plugin 'git@github.com:SirVer/ultisnips.git'
 Plugin 'honza/vim-snippets'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
-Plugin 'git@github.com:pangloss/vim-javascript.git'
 Plugin 'git@github.com:moll/vim-node.git'
 Plugin 'git@github.com:tpope/vim-surround.git'
-Plugin 'git@github.com:posva/vim-vue.git'
 Plugin 'git@github.com:mileszs/ack.vim.git'
 Plugin 'git@github.com:vim-scripts/bufexplorer.zip.git'
 Plugin 'git@github.com:yegappan/mru.git'
@@ -36,7 +33,13 @@ Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
-Plugin 'git@github.com:mxw/vim-jsx.git'
+Plugin 'git@github.com:sheerun/vim-polyglot.git'
+Plugin 'git@github.com:Valloric/YouCompleteMe.git'
+"Plugin 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+
+"Plugin 'git@github.com:mxw/vim-jsx.git'
+"Plugin 'git@github.com:pangloss/vim-javascript.git'
+"Plugin 'git@github.com:posva/vim-vue.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -142,7 +145,6 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -208,9 +210,6 @@ map L <C-W>l
 
 " Close the current buffer
 map <leader>d :Bclose<cr>:tabclose<cr>gT
-
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -435,14 +434,15 @@ let g:gundo_prefer_python3 = 1
 
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
-let g:ale_linters = {'javascript': ['prettier']}
-let g:ale_fixers = [ 'prettier' ]
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = [ 'eslint' ]
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
 :set splitright
 
-nnoremap <leader>b :YcmCompleter GoTo<CR>
+" nnoremap <leader>b :YcmCompleter GoTo<CR>
+nmap <leader>b <Plug>(coc-definition)
 
 nnoremap <leader>c :%!python -m json.tool<CR>
 
@@ -757,3 +757,15 @@ set foldlevel=0 " Autofold everything by default
 set foldmethod=indent " Fold on the indent
 set foldnestmax=1 " I only like to fold outer functions
 set foldopen=all " Open folds if you touch them in any way
+
+" use <tab> for trigger completion and navigate to the next complete item
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+

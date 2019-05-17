@@ -127,3 +127,5 @@ export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
 eval $(thefuck --alias)
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
