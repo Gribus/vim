@@ -441,8 +441,8 @@ let g:ale_fix_on_save = 1
 
 :set splitright
 
-" nnoremap <leader>b :YcmCompleter GoTo<CR>
-nmap <leader>b <Plug>(coc-definition)
+nnoremap <leader>b :YcmCompleter GoTo<CR>
+" nmap <leader>b <Plug>(coc-definition)
 
 nnoremap <leader>c :%!python -m json.tool<CR>
 
