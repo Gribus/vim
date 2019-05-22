@@ -769,3 +769,4 @@ set foldopen=all " Open folds if you touch them in any way
 "      \ <SID>check_back_space() ? "\<TAB>" :
 "      \ coc#refresh()
 
+let g:no_csv_maps = 1

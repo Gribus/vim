@@ -109,7 +109,7 @@ alias vconf="vim ~/.vimrc"
 
 alias en="trans :en"
 alias de="trans :de"
-alias go="google"
+alias go="googler "
 alias ra="ranger"
 alias chrome="open -a 'Google Chrome'"
 alias json="python -m json.tool"
