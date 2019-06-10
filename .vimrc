@@ -507,6 +507,7 @@ set guioptions-=L
 set nu
 set rnu
 colorscheme gruvbox
+set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
