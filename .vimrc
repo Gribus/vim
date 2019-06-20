@@ -84,8 +84,8 @@ nmap <Leader>q :q<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 15 lines to the cursor - when moving vertically using j/k
-set so=15
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
 
 "Always show current position
 set ruler
@@ -385,8 +385,8 @@ if has("gui_macvim")
   noremap <D-0> :tablast<CR>
 endif
 
-map <C-d> 10j
-map <C-u> 10k
+map <C-d> 20j
+map <C-u> 20k
 
 nnoremap <C-t> :tabnew<CR>
 set switchbuf=useopen
@@ -435,7 +435,8 @@ let g:gundo_prefer_python3 = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = [ 'eslint' ]
+let g:ale_fixers = [ 'prettier' ]
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
@@ -638,7 +639,7 @@ let g:yankstack_yank_keys = ['y', 'd']
 """"""""""""""""""""""""""""""
 " => FZF
 """"""""""""""""""""""""""""""
-nmap <c-f> :Files<CR>
+nmap <c-f> :GFiles<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -708,7 +709,7 @@ let g:multi_cursor_start_word_key      = '<C-s>'
 let g:multi_cursor_next_key            = '<C-s>'
 
 " auto html tags filetypes
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.vue'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.vue, *.js'
 
 " search with space
 nmap <Space> /
