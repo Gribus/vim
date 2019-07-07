@@ -35,6 +35,8 @@ Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
+Plugin 'git@github.com:dyng/ctrlsf.vim.git'
+
 "Plugin 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 "Plugin 'git@github.com:mxw/vim-jsx.git'
@@ -356,7 +358,7 @@ function! VisualSelection(direction, extra_filter) range
     let l:pattern = substitute(l:pattern, "\n$", "", "")
 
     if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
+        call CmdLine("CtrlSF '" . l:pattern . "' " )
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
     endif
@@ -562,7 +564,7 @@ endif
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>g :Ack! 
+map <leader>g :CtrlSF 
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
