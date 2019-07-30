@@ -200,7 +200,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-e> <Plug>(easymotion-bd-w)
+map <C-e> <Plug>(easymotion-bd-f)
 let g:EasyMotion_smartcase = 1
 
 " Disable highlight when <leader><cr> is pressed

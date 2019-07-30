@@ -118,14 +118,12 @@ alias cs="cht.sh"
 alias nbrew="HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 alias uv="~/vim/update-vim.sh"
 alias pv="~/vim/pull-vim.sh"
-alias f="fuck"
+alias ap="bat ~/ApproLogic/ApproLogicNotes.txt"
 
 stty -ixon
 
 export LC_CTYPE=de_DE.UTF-8
 export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
-
-eval $(thefuck --alias)
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
