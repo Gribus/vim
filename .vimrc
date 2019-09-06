@@ -36,6 +36,7 @@ Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
+Plugin 'git@github.com:bkad/CamelCaseMotion.git'
 
 "Plugin 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
@@ -200,7 +201,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-e> <Plug>(easymotion-bd-f)
+map <C-e> <Plug>(easymotion-bd-w)
 let g:EasyMotion_smartcase = 1
 
 " Disable highlight when <leader><cr> is pressed
@@ -437,8 +438,8 @@ let g:gundo_prefer_python3 = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = [ 'eslint' ]
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_fixers = [ 'prettier' ]
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --print-width 100'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
@@ -701,7 +702,7 @@ endif
 set smartindent
 
 " auto save on losing focus
-:au FocusLost * silent! wa
+" :au FocusLost * silent! wa
 
 " jsdoc hotkey
 nmap <silent> <C-l> <Plug>(jsdoc)
@@ -728,3 +729,6 @@ set foldopen=all " Open folds if you touch them in any way
 
 " remove all mappings from csv plugin
 let g:no_csv_maps = 1
+
+" jumps to exact mark position
+nnoremap ' `
