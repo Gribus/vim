@@ -701,7 +701,7 @@ endif
 set smartindent
 
 " auto save on losing focus
-:au FocusLost * silent! wa
+" :au FocusLost * silent! wa
 
 " jsdoc hotkey
 nmap <silent> <C-l> <Plug>(jsdoc)
