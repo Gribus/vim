@@ -200,7 +200,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-e> <Plug>(easymotion-bd-f)
+map <C-e> <Plug>(easymotion-bd-w)
 let g:EasyMotion_smartcase = 1
 
 " Disable highlight when <leader><cr> is pressed
@@ -438,7 +438,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = [ 'eslint' ]
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --print-width 100'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
@@ -728,3 +728,6 @@ set foldopen=all " Open folds if you touch them in any way
 
 " remove all mappings from csv plugin
 let g:no_csv_maps = 1
+
+" jump to exact mark position 
+nnoremap ' `
