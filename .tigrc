@@ -1,0 +1,3 @@
+bind status D !@?rm %(file)
+bind generic L !?git checkout %(commit)
+bind generic 9 !@sh -c "echo %(commit) | pbcopy -selection c"
