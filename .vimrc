@@ -36,6 +36,7 @@ Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
+Plugin 'git@github.com:bkad/CamelCaseMotion.git'
 
 "Plugin 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
@@ -437,7 +438,7 @@ let g:gundo_prefer_python3 = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = [ 'eslint' ]
+let g:ale_fixers = [ 'prettier' ]
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --print-width 100'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
@@ -729,5 +730,5 @@ set foldopen=all " Open folds if you touch them in any way
 " remove all mappings from csv plugin
 let g:no_csv_maps = 1
 
-" jump to exact mark position 
+" jumps to exact mark position
 nnoremap ' `

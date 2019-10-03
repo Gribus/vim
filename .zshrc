@@ -118,7 +118,6 @@ alias cs="cht.sh"
 alias nbrew="HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 alias uv="~/vim/update-vim.sh"
 alias pv="~/vim/pull-vim.sh"
-alias us="~/vim/submodule-update.sh"
 alias ap="bat ~/ApproLogic/ApproLogicNotes.txt"
 alias base="node ~/vim/base32.js"
 
