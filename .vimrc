@@ -702,7 +702,7 @@ endif
 set smartindent
 
 " auto save on losing focus
-" :au FocusLost * silent! wa
+:au FocusLost * silent! wa
 
 " jsdoc hotkey
 nmap <silent> <C-l> <Plug>(jsdoc)
@@ -720,7 +720,7 @@ nmap <Space> /
 nmap <C-Space> ?
 
 set foldclose=all " Close folds if you leave them in any way
-set foldcolumn=1 " Show the foldcolumn
+" set foldcolumn=1 " Show the foldcolumn
 set foldenable " Turn on folding
 set foldlevel=5 " Autofold everything by default
 set foldmethod=indent " Fold on the indent
