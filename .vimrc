@@ -34,11 +34,8 @@ Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
-" Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
-Plugin 'git@github.com:bkad/CamelCaseMotion.git'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
-" Plugin 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 
 "Plugin 'git@github.com:mxw/vim-jsx.git'
 "Plugin 'git@github.com:pangloss/vim-javascript.git'
