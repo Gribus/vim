@@ -120,6 +120,7 @@ alias uv="~/vim/update-vim.sh"
 alias pv="~/vim/pull-vim.sh"
 alias ap="bat ~/ApproLogic/ApproLogicNotes.txt"
 alias base="node ~/vim/base32.js"
+alias us="~/vim/update-vim.sh"
 
 stty -ixon
 
