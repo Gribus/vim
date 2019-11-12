@@ -20,8 +20,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
 Plugin 'git@github.com:moll/vim-node.git'
 Plugin 'git@github.com:tpope/vim-surround.git'
-Plugin 'git@github.com:mileszs/ack.vim.git'
-Plugin 'git@github.com:vim-scripts/bufexplorer.zip.git'
 Plugin 'git@github.com:yegappan/mru.git'
 Plugin 'git@github.com:tpope/vim-commentary.git'
 Plugin 'git@github.com:terryma/vim-expand-region.git'
@@ -29,12 +27,12 @@ Plugin 'git@github.com:w0rp/ale.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
-Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
+Plugin 'git@github.com:Raimondi/delimitMate.git'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Plugin 'git@github.com:mxw/vim-jsx.git'
@@ -542,15 +540,6 @@ cnoremap <C-K>		<C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack searching and cope displaying
-"    requires ack.vim - it's much better than vimgrep/grep
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use the the_silver_searcher if possible (much faster than Ack)
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
-endif
 
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>

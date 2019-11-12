@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zconf="vim ~/.zshrc"
 alias vconf="vim ~/.vimrc"
+alias rconf="vim ~/.config/ranger/rc.conf"
 
 alias en="trans :en"
 alias de="trans :de"
@@ -128,4 +129,4 @@ export LC_CTYPE=de_DE.UTF-8
 export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
