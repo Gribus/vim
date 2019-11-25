@@ -8,6 +8,7 @@ cp ~/.config/ranger/rc.conf ~/vim/
 cp ~/.config/ranger/rifle.conf ~/vim/
 git add .vimrc
 git add .zshrc
+git add ./base32.js
 git add javascript.snippets
 git commit -m "Update vim"
 git push
