@@ -74,6 +74,7 @@ plugins=(
   web-search
   urltools
   brew
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh

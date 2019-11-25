@@ -23,7 +23,6 @@ Plugin 'git@github.com:tpope/vim-surround.git'
 Plugin 'git@github.com:mileszs/ack.vim.git'
 Plugin 'git@github.com:vim-scripts/bufexplorer.zip.git'
 Plugin 'git@github.com:yegappan/mru.git'
-Plugin 'git@github.com:tpope/vim-commentary.git'
 Plugin 'git@github.com:terryma/vim-expand-region.git'
 Plugin 'git@github.com:w0rp/ale.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
@@ -35,6 +34,7 @@ Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
+Plugin 'git@github.com:tomtom/tcomment_vim.git'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Plugin 'git@github.com:mxw/vim-jsx.git'
@@ -436,7 +436,6 @@ let g:ale_fix_on_save = 1
 
 :set splitright
 
-nnoremap <leader>b :YcmCompleter GoTo<CR>
 " nmap <leader>b <Plug>(coc-definition)
 
 nnoremap <leader>c :%!python -m json.tool<CR>
@@ -470,9 +469,6 @@ call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
 
 "EXTENDED
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -763,14 +759,10 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ]g <Plug>(coc-implementation)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -800,4 +792,9 @@ augroup end
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-nmap \ :Commentary<CR>
+nmap \ :TComment<CR>
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
