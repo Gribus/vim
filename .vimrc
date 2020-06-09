@@ -15,26 +15,24 @@ Plugin 'git@github.com:junegunn/fzf.vim.git'
 Plugin 'git@github.com:morhetz/gruvbox.git'
 Plugin 'git@github.com:sjl/gundo.vim.git'
 Plugin 'git@github.com:scrooloose/nerdtree.git'
-Plugin 'git@github.com:SirVer/ultisnips.git'
-Plugin 'honza/vim-snippets'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
-Plugin 'git@github.com:moll/vim-node.git'
-Plugin 'git@github.com:tpope/vim-surround.git'
+" Plugin 'git@github.com:moll/vim-node.git'
 Plugin 'git@github.com:mileszs/ack.vim.git'
 Plugin 'git@github.com:vim-scripts/bufexplorer.zip.git'
 Plugin 'git@github.com:yegappan/mru.git'
 Plugin 'git@github.com:terryma/vim-expand-region.git'
+Plugin 'git@github.com:tpope/vim-surround.git'
 Plugin 'git@github.com:w0rp/ale.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
-Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
+Plugin 'git@github.com:metakirby5/codi.vim.git'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Plugin 'git@github.com:mxw/vim-jsx.git'
@@ -393,7 +391,11 @@ let g:ag_qhandler="copen 30"
 
 set colorcolumn=100
 
-set diffopt+=vertical
+try
+  set diffopt+=vertical
+catch
+  set diffopt-=internal
+endtry
 
 map <leader>3 :diffget //3<cr>
 map <leader>2 :diffget //2<cr>
@@ -429,7 +431,7 @@ let g:gundo_prefer_python3 = 1
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = [ 'prettier' ]
+let g:ale_fixers = [ 'eslint' ]
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --print-width 100'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
@@ -707,11 +709,11 @@ nmap <Space> /
 nmap <C-Space> ?
 
 set foldclose=all " Close folds if you leave them in any way
-" set foldcolumn=1 " Show the foldcolumn
+set foldcolumn=1 " Show the foldcolumn
 set foldenable " Turn on folding
-set foldlevel=5 " Autofold everything by default
-set foldmethod=indent " Fold on the indent
-" set foldnestmax=1 " I only like to fold outer functions
+set foldlevel=1 " Autofold everything by default
+set foldmethod=syntax " Fold on the indent
+set foldnestmax=1 " I only like to fold outer functions
 set foldopen=all " Open folds if you touch them in any way
 
 " remove all mappings from csv plugin
@@ -798,3 +800,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+noremap <Leader>y "*y
+
+imap <C-k> <Plug>(coc-snippets-expand)

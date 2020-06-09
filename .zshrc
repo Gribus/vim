@@ -110,7 +110,6 @@ alias vconf="vim ~/.vimrc"
 
 alias en="trans :en"
 alias de="trans :de"
-alias go="googler "
 alias ra="ranger"
 alias chrome="open -a 'Google Chrome'"
 alias json="python -m json.tool"
@@ -121,6 +120,10 @@ alias uv="~/vim/update-vim.sh"
 alias pv="~/vim/pull-vim.sh"
 alias ap="bat ~/ApproLogic/ApproLogicNotes.txt"
 alias base="node ~/vim/base32.js"
+alias yo="open -a yoink"
+alias vi="vim"
+alias v="vim"
+alias m="mvim"
 
 stty -ixon
 
@@ -129,3 +132,5 @@ export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+copy(){ osascript -e{'on run{a}','set the clipboard to posix file a',end} "$(greadlink -f -- "$1")";}
