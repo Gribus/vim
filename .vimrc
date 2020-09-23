@@ -22,6 +22,7 @@ Plugin 'git@github.com:vim-scripts/bufexplorer.zip.git'
 Plugin 'git@github.com:yegappan/mru.git'
 Plugin 'git@github.com:terryma/vim-expand-region.git'
 Plugin 'git@github.com:tpope/vim-surround.git'
+Plugin 'git@github.com:tpope/vim-repeat.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
 Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
@@ -29,6 +30,7 @@ Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
 Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
+Plugin 'git@github.com:dense-analysis/ale.git'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
 Plugin 'git@github.com:metakirby5/codi.vim.git'
@@ -75,7 +77,8 @@ let mapleader = ","
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-nmap <Leader>w :CocCommand eslint.executeAutofix<CR>:w<CR>
+" nmap <Leader>w :CocCommand eslint.executeAutofix<CR>:w<CR>
+nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,8 +97,8 @@ set cmdheight=2
 set hid
 
 " Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+" set backspace=eol,start,indent
+" set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
@@ -350,6 +353,8 @@ function! VisualSelection(direction, extra_filter) range
         call CmdLine("CtrlSF '" . l:pattern . "' " )
     elseif a:direction == 'replace'
         call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'tags'
+        call CmdLine("Tags " . l:pattern)
     endif
 
     let @/ = l:pattern
@@ -557,6 +562,8 @@ map <leader>g :CtrlSF
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+vmap <silent> <C-]> :call VisualSelection('tags', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
@@ -804,3 +811,48 @@ nmap <silent> gr <Plug>(coc-references)
 noremap <Leader>y "*y
 
 imap <C-k> <Plug>(coc-snippets-expand)
+
+nmap <C-k> :bprevious <CR>
+nmap <C-j> :bnext <CR>
+
+" :command -nargs=+ T :echo "<args>"
+" :command -nargs=+ T :-<args>"
+
+" autocmd CmdlineEnter * set nornu | redraw
+" autocmd CmdlineLeave * set rnu
+
+function! s:update_fzf_colors()
+  let rules =
+  \ { 'fg':      [['Normal',       'fg']],
+    \ 'bg':      [['Normal',       'bg']],
+    \ 'hl':      [['Comment',      'fg']],
+    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
+    \ 'bg+':     [['CursorColumn', 'bg']],
+    \ 'hl+':     [['Statement',    'fg']],
+    \ 'info':    [['PreProc',      'fg']],
+    \ 'prompt':  [['Conditional',  'fg']],
+    \ 'pointer': [['Exception',    'fg']],
+    \ 'marker':  [['Keyword',      'fg']],
+    \ 'spinner': [['Label',        'fg']],
+    \ 'header':  [['Comment',      'fg']] }
+  let cols = []
+  for [name, pairs] in items(rules)
+    for pair in pairs
+      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
+      if !empty(name) && code > 0
+        call add(cols, name.':'.code)
+        break
+      endif
+    endfor
+  endfor
+  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
+  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
+        \ empty(cols) ? '' : (' --color='.join(cols, ','))
+endfunction
+
+augroup _fzf
+  autocmd!
+  autocmd ColorScheme * call <sid>update_fzf_colors()
+augroup END
+
+set tags=./tags,tags;$HOME

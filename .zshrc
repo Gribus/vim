@@ -124,6 +124,7 @@ alias yo="open -a yoink"
 alias vi="vim"
 alias v="vim"
 alias m="mvim"
+alias ctags="`brew --prefix`/bin/ctags"
 
 stty -ixon
 
