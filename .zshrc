@@ -121,10 +121,11 @@ alias pv="~/vim/pull-vim.sh"
 alias ap="bat ~/ApproLogic/ApproLogicNotes.txt"
 alias base="node ~/vim/base32.js"
 alias yo="open -a yoink"
-alias vi="vim"
-alias v="vim"
+alias n="nvim"
+alias vim="nvim"
 alias m="mvim"
 alias ctags="`brew --prefix`/bin/ctags"
+alias t="ts-node"
 
 stty -ixon
 
@@ -133,5 +134,8 @@ export LC_ALL=de_DE.UTF-8
 export LANG=de_DE.UTF-8
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+source ~/vim/shell/completion.zsh
+source ~/vim/shell/key-bindings.zsh
 
 copy(){ osascript -e{'on run{a}','set the clipboard to posix file a',end} "$(greadlink -f -- "$1")";}

@@ -13,27 +13,22 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git@github.com:junegunn/fzf.vim.git'
 Plugin 'git@github.com:morhetz/gruvbox.git'
-Plugin 'git@github.com:sjl/gundo.vim.git'
-Plugin 'git@github.com:scrooloose/nerdtree.git'
+Plugin 'git@github.com:jiangmiao/auto-pairs.git'
 Plugin 'git@github.com:easymotion/vim-easymotion.git'
-" Plugin 'git@github.com:moll/vim-node.git'
-Plugin 'git@github.com:mileszs/ack.vim.git'
-Plugin 'git@github.com:vim-scripts/bufexplorer.zip.git'
-Plugin 'git@github.com:yegappan/mru.git'
 Plugin 'git@github.com:terryma/vim-expand-region.git'
 Plugin 'git@github.com:tpope/vim-surround.git'
 Plugin 'git@github.com:tpope/vim-repeat.git'
 Plugin 'git@github.com:airblade/vim-gitgutter.git'
 Plugin 'git@github.com:itchyny/lightline.vim.git'
-Plugin 'git@github.com:Xuyuanp/nerdtree-git-plugin.git'
 Plugin 'git@github.com:heavenshell/vim-jsdoc.git'
 Plugin 'git@github.com:terryma/vim-multiple-cursors.git'
-Plugin 'git@github.com:alvan/vim-closetag.git'
 Plugin 'git@github.com:sheerun/vim-polyglot.git'
 Plugin 'git@github.com:dense-analysis/ale.git'
+Plugin 'git@github.com:unblevable/quick-scope'
 Plugin 'git@github.com:dyng/ctrlsf.vim.git'
+Plugin 'git@github.com:kevinhwang91/rnvimr.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
-Plugin 'git@github.com:metakirby5/codi.vim.git'
+Plugin 'voldikss/vim-floaterm'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Plugin 'git@github.com:mxw/vim-jsx.git'
@@ -86,6 +81,21 @@ nmap <Leader>q :q<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
+
+" Display long lines as just one line
+set nowrap
+
+" auto source when writing to init.vm alternatively you can run :source $MYVIMRC
+au! BufWritePost $MYVIMRC source %
+
+" More space for displaying messages
+set cmdheight=2
+
+" Faster completion
+set updatetime=300                      
+
+" By default timeoutlen is 1000 ms
+set timeoutlen=500                      
 
 "Always show current position
 set ruler
@@ -383,8 +393,6 @@ endif
 
 map <C-d> 20j
 map <C-u> 20k
-
-nnoremap <C-t> :tabnew<CR>
 set switchbuf=useopen
 
 set cursorline
@@ -423,8 +431,8 @@ nnoremap <Tab> <C-^>
 let g:vue_disable_pre_processors=1
 
 let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-q>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsSnippetDirectories=["jssnippets"]
 
@@ -446,8 +454,8 @@ let g:ale_fix_on_save = 1
 
 nnoremap <leader>c :%!python -m json.tool<CR>
 
-map <leader>s :NERDTreeFind<CR>
-map <C-p> :NERDTreeToggle<CR>
+" map <leader>s :NERDTreeFind<CR>
+" map <C-p> :CocCommand explorer<CR>
 
 " fzf stuff
 set rtp+=/usr/local/opt/fzf
@@ -565,87 +573,11 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 vmap <silent> <C-]> :call VisualSelection('tags', '')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with Ack, display your results in cope by doing:
-  " <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-func! DeleteTillSlash()
-    let g:cmd = getcmdline()
-
-    if has("win16") || has("win32")
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
-    else
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
-    endif
-
-    if g:cmd == g:cmd_edited
-        if has("win16") || has("win32")
-            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
-        else
-            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
-        endif
-    endif   
-
-    return g:cmd_edited
-endfunc
-
-func! CurrentFileDir(cmd)
-    return a:cmd . " " . expand("%:p:h") . "/"
-endfunc
-
-
-""""""""""""""""""""""""""""""
-" => bufExplorer plugin
-""""""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='mru'
-map <leader>o :BufExplorer<cr>
-
-""""""""""""""""""""""""""""""
-" => MRU plugin
-""""""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
-" => YankStack
-""""""""""""""""""""""""""""""
-let g:yankstack_yank_keys = ['y', 'd']
-
-
-
 """"""""""""""""""""""""""""""
 " => FZF
 """"""""""""""""""""""""""""""
 nmap <c-f> :GFiles<CR>
 nmap <c-q> :Files<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let NERDTreeShowHidden=1
-let g:NERDTreeWinSize=35
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
@@ -686,11 +618,6 @@ if has("clipboard")
   if has("unnamedplus") " X11 support
     set clipboard+=unnamedplus
   endif
-endif
-
-" use ag insteag of ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
 endif
 
 " use code syntax and style to align
@@ -768,8 +695,8 @@ endfunction
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
-" nmap <silent> [g <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " nmap <silent> ]g <Plug>(coc-implementation)
 
@@ -810,49 +737,40 @@ nmap <silent> gr <Plug>(coc-references)
 
 noremap <Leader>y "*y
 
-imap <C-k> <Plug>(coc-snippets-expand)
+imap <C-j> <Plug>(coc-snippets-expand)
 
 nmap <C-k> :bprevious <CR>
 nmap <C-j> :bnext <CR>
 
-" :command -nargs=+ T :echo "<args>"
-" :command -nargs=+ T :-<args>"
+set tags=./tags,tags;$HOME
 
-" autocmd CmdlineEnter * set nornu | redraw
-" autocmd CmdlineLeave * set rnu
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:update_fzf_colors()
-  let rules =
-  \ { 'fg':      [['Normal',       'fg']],
-    \ 'bg':      [['Normal',       'bg']],
-    \ 'hl':      [['Comment',      'fg']],
-    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
-    \ 'bg+':     [['CursorColumn', 'bg']],
-    \ 'hl+':     [['Statement',    'fg']],
-    \ 'info':    [['PreProc',      'fg']],
-    \ 'prompt':  [['Conditional',  'fg']],
-    \ 'pointer': [['Exception',    'fg']],
-    \ 'marker':  [['Keyword',      'fg']],
-    \ 'spinner': [['Label',        'fg']],
-    \ 'header':  [['Comment',      'fg']] }
-  let cols = []
-  for [name, pairs] in items(rules)
-    for pair in pairs
-      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
-      if !empty(name) && code > 0
-        call add(cols, name.':'.code)
-        break
-      endif
-    endfor
-  endfor
-  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
-  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts .
-        \ empty(cols) ? '' : (' --color='.join(cols, ','))
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
 endfunction
 
-augroup _fzf
-  autocmd!
-  autocmd ColorScheme * call <sid>update_fzf_colors()
-augroup END
+" Make Ranger replace netrw and be the file explorer
+let g:rnvimr_ex_enable = 1
 
-set tags=./tags,tags;$HOME
+nmap <C-p> :RnvimrToggle<CR>
+
+nmap <leader>1 :tabn 1<CR>
+nmap <leader>2 :tabn 2<CR>
+nmap <leader>3 :tabn 3<CR>
+nmap <leader>4 :tabn 4<CR>
+nmap <leader>5 :tabn 5<CR>
+nmap <leader>6 :tabn 6<CR>
+nmap <leader>7 :tabn 7<CR>
+nmap <leader>8 :tabn 8<CR>
+nmap <leader>9 :tabn 9<CR>
+
+nmap <C-t> :tabnew<CR>
+
+nmap <leader>f :FloatermNew<CR>
+
