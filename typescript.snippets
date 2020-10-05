@@ -38,42 +38,6 @@ switch ($1) {
 }
 endsnippet
 
-snippet then "then" b
-$1($2)
-	.then(function($3){
-		$4
-	})
-endsnippet
-
-snippet catch "catch" b
-$1($2)
-	.catch(function($3){
-		$4
-	})
-endsnippet
-
-snippet fun "fun" i
-function($1) {
-	$2
-}$3
-endsnippet
-
-snippet pro "prototype" i
-$1.prototype.$2 = function($3) {
-	$4
-};
-endsnippet
-
-snippet self "self" b
-var self = this;
-endsnippet
-
-snippet forEach "forEach" b
-$1.forEach(function($2) {
-	$3
-})
-endsnippet
-
 snippet map "map" b
 $1.map(function($2) {
 	$3
@@ -92,10 +56,21 @@ $1.reduce(function($2) {
 }, $3)
 endsnippet
 
-snippet on "event" b
-$1.on('$2', $3);
+snippet t "type" i
+($1: $2)$3
 endsnippet
 
-snippet camel "camel" i
-// eslint-disable-line camelcase
+snippet as "import" b
+import $1 as $2 from '$3';
 endsnippet
+
+snippet import "import" b
+import {$1} from '$2';
+endsnippet
+
+snippet fn "function" b
+let $1: ($2 : $3) => $4; 
+$1 = ($2) => $5
+endsnippet
+
+
