@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -28,7 +29,6 @@ Plugin 'git@github.com:dyng/ctrlsf.vim.git'
 Plugin 'git@github.com:kevinhwang91/rnvimr.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
 Plugin 'git@github.com:ChristianChiarulli/codi.vim.git'
-Plugin 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 Plugin 'voldikss/vim-floaterm'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -369,7 +369,7 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fixers = [ 'prettier' ]
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --print-width 100'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --print-width 100'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 
@@ -599,4 +599,53 @@ nmap <leader>9 :tabn 9<CR>
 nmap <C-t> :tabnew<CR>
 
 nmap <leader>f :FloatermNew<CR>
+
+" map s :BLines<CR>
+
+xnoremap > >gv
+xnoremap < <gv
+
+" function! s:copy_results(lines)
+"   :r !echo a:lines
+"   let joined_lines = join(a:lines, "\n")
+"   if len(a:lines) > 1
+"     let joined_lines .= "\n"
+"   endif
+"   let @+ = joined_lines
+" endfunction
+
+
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit',
+"   \ 'ctrl-o': function('s:copy_results'),
+"   \ }
+
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit',
+"   \ 'ctrl-o': ':r !echo'}
+
+function! HandleFZF(file)
+    let l:bar = substitute(a:file, "\\", "", "g")
+    call append(line('.'), l:bar)
+    " execute '!echo '.l:bar
+endfunction
+command! -nargs=1 HandleFZF :call HandleFZF(<f-args>)
+
+function! s:buffer_lines()
+  let res = []
+  call extend(res, getbufline(bufname(),0,"$"))
+  return res
+endfunction
+
+
+nmap s :call fzf#run({
+\   'source':  <sid>buffer_lines(),
+\   'sink':    'HandleFZF',
+\   'options': '--layout=reverse --multi',
+\   'window': {'width': 0.9, 'height': 0.6}
+\})<CR>
 
