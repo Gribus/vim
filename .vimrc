@@ -15,7 +15,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git@github.com:junegunn/fzf.vim.git'
 Plugin 'git@github.com:morhetz/gruvbox.git'
 Plugin 'git@github.com:jiangmiao/auto-pairs.git'
-Plugin 'git@github.com:easymotion/vim-easymotion.git'
 Plugin 'git@github.com:terryma/vim-expand-region.git'
 Plugin 'git@github.com:tpope/vim-surround.git'
 Plugin 'git@github.com:tpope/vim-repeat.git'
@@ -30,6 +29,7 @@ Plugin 'git@github.com:kevinhwang91/rnvimr.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
 Plugin 'git@github.com:ChristianChiarulli/codi.vim.git'
 Plugin 'voldikss/vim-floaterm'
+Plugin 'git@github.com:justinmk/vim-sneak.git'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " All of your Plugins must be added before the following line
@@ -642,10 +642,14 @@ function! s:buffer_lines()
 endfunction
 
 
-nmap s :call fzf#run({
+nmap <C-e> :call fzf#run({
 \   'source':  <sid>buffer_lines(),
 \   'sink':    'HandleFZF',
 \   'options': '--layout=reverse --multi',
 \   'window': {'width': 0.9, 'height': 0.6}
 \})<CR>
 
+let g:sneak#label = 1
+
+" map s <Plug>SneakLabel_s
+" map S <Plug>SneakLabel_S

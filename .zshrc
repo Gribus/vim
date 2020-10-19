@@ -71,11 +71,11 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   colored-man-pages
-  web-search
   urltools
   brew
   vi-mode
 )
+  # web-search
 
 source $ZSH/oh-my-zsh.sh
 
