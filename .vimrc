@@ -28,6 +28,7 @@ Plugin 'git@github.com:dyng/ctrlsf.vim.git'
 Plugin 'git@github.com:kevinhwang91/rnvimr.git'
 Plugin 'git@github.com:tomtom/tcomment_vim.git'
 Plugin 'git@github.com:ChristianChiarulli/codi.vim.git'
+Plugin 'git@github.com:chrisbra/Colorizer.git'
 Plugin 'voldikss/vim-floaterm'
 Plugin 'git@github.com:justinmk/vim-sneak.git'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
@@ -348,8 +349,8 @@ catch
   set diffopt-=internal
 endtry
 
-map <leader>3 :diffget //3<cr>
-map <leader>2 :diffget //2<cr>
+map <leader>3 :diffget 3<cr>
+map <leader>2 :diffget 2<cr>
 map <leader>1 :diffget<cr>
 
 " How many spaces are used as Tab
@@ -483,7 +484,20 @@ let g:lightline = {
 
 
 " expand region settings
-let g:expand_region_text_objects = {'i]': 1,'ib': 1,'iB': 1, 'a]': 1, 'aB': 1, 'ab': 1, 'i"':0, 'i''' :0} 
+let g:expand_region_text_objects = {
+      \'i]': 1,
+      \'ib': 1,
+      \'iB': 1,
+      \'a]': 1,
+      \'aB': 1,
+      \'ab': 1,
+      \'i"': 0,
+      \'i''': 0,
+      \'a"': 0,
+      \'a''': 0
+      \ } 
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " yank to clipboard
 if has("clipboard")
@@ -605,29 +619,6 @@ nmap <leader>f :FloatermNew<CR>
 xnoremap > >gv
 xnoremap < <gv
 
-" function! s:copy_results(lines)
-"   :r !echo a:lines
-"   let joined_lines = join(a:lines, "\n")
-"   if len(a:lines) > 1
-"     let joined_lines .= "\n"
-"   endif
-"   let @+ = joined_lines
-" endfunction
-
-
-" let g:fzf_action = {
-"   \ 'ctrl-t': 'tab split',
-"   \ 'ctrl-x': 'split',
-"   \ 'ctrl-v': 'vsplit',
-"   \ 'ctrl-o': function('s:copy_results'),
-"   \ }
-
-" let g:fzf_action = {
-"   \ 'ctrl-t': 'tab split',
-"   \ 'ctrl-x': 'split',
-"   \ 'ctrl-v': 'vsplit',
-"   \ 'ctrl-o': ':r !echo'}
-
 function! HandleFZF(file)
     let l:bar = substitute(a:file, "\\", "", "g")
     call append(line('.'), l:bar)
@@ -651,5 +642,4 @@ nmap <C-e> :call fzf#run({
 
 let g:sneak#label = 1
 
-" map s <Plug>SneakLabel_s
-" map S <Plug>SneakLabel_S
+let g:sneak#target_labels = "asdfghjklqwertyuiopzxcvbnm[];"
