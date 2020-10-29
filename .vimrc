@@ -369,7 +369,7 @@ nnoremap <Tab> <C-^>
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_text_changed = 1
 let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = [ 'prettier' ]
+let g:ale_fixers = [ 'eslint' ]
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --print-width 100'
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
