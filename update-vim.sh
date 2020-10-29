@@ -3,7 +3,6 @@ cd ~/vim
 cp ~/.vimrc ~/vim/
 cp ~/.zshrc ~/vim/
 cp ~/.tigrc ~/vim/
-cp ~/.vim/bundle/vim-snippets/snippets/javascript/javascript.snippets ~/vim/
 cp ~/.config/coc/ultisnips/javascript.snippets ~/vim/
 cp ~/.config/coc/ultisnips/typescript.snippets ~/vim/
 cp ~/.config/ranger/rc.conf ~/vim/
