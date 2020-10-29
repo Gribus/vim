@@ -15,6 +15,7 @@ git add ./base32.js
 git add javascript.snippets
 git add typescript.snippets
 git add *
+git add .*
 git commit -m "Update vim"
 git push
 
